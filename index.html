@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>动物识别系统</title>
+	<link rel="stylesheet" type="text/css" href="layui/css/layui.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+</head>
+<body>
+	<div class="layui-container container"> 
+		<h1>动物识别系统</h1>
+		<p>可识别的动物有：金钱豹、虎、长颈鹿、斑马、鸵鸟、企鹅、信天翁</p>
+		<div class="layui-block">
+			<div class="layui-form-label">规则</div>
+			<ul class="rules_list">
+				<li>R1: If 有毛发 Then 是哺乳动物</li>
+				<li>R2: If 有奶 Then 是哺乳动物</li>
+				<li>R3: If 有羽毛 Then 是鸟</li>
+				<li>R4: If 会飞 AND 会下蛋 Then 是鸟</li>
+				<li>R5: If 吃肉 Then 是肉食动物</li>
+				<li>R6: If 有犬齿 AND 有爪 AND 眼盯前方 Then 肉食动物</li>
+				<li>R7: If 哺乳动物 AND 有蹄 Then 有蹄动物</li>
+				<li>R8: If 哺乳动物 AND 嚼反刍动物 Then 有蹄动物</li>
+				<li>R9: If 哺乳动物 AND 肉食动物 AND 黄褐色 AND 身上有暗斑点 Then 金钱豹</li>
+				<li>R10: If 哺乳动物 AND 肉食动物 AND 黄褐色 AND 有黑色条纹 Then 虎</li>
+				<li>R11: If 有蹄动物 AND 有长脖子 AND 有长腿 AND 身上有暗斑点 Then 长颈鹿</li>
+				<li>R12: If 有蹄动物 AND 身上有黑条纹 Then 斑马</li>
+				<li>R13: If 是鸟 AND 有长脖子 AND 有长腿 AND 不会飞 Then 鸵鸟</li>
+				<li>R14: If 是鸟 AND 会游泳 AND 不会飞 AND 有黑白两色 Then 企鹅</li>
+				<li>R15: If 是鸟 AND 善飞 Then 信天翁</li>
+			</ul>
+		</div>
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<label class="layui-form-label">请选择已知的动物特征</label>
+				<div class="layui-input-block">
+					<input type="checkbox" class="checkbox0" name="claw" title="有爪" value="有爪">
+					<input type="checkbox" class="checkbox1" name="hoof" title="有蹄" value="有蹄">
+					<input type="checkbox" class="checkbox2" name="breast" title="有奶" value="有奶">
+					<input type="checkbox" class="checkbox3" name="eatMeat" title="吃肉" value="吃肉">
+					<input type="checkbox" class="checkbox4" name="bird" title="是鸟" value="是鸟">
+					<input type="checkbox" class="checkbox5" name="canFly" title="会飞" value="会飞">
+					<input type="checkbox" class="checkbox6" name="goodAtFly" title="善飞" value="善飞">
+					<input type="checkbox" class="checkbox7" name="cantFly" title="不会飞" value="不会飞">
+					<input type="checkbox" class="checkbox8" name="tawny" title="黄褐色" value="黄褐色">
+					<input type="checkbox" class="checkbox9" name="hair" title="有毛发" value="有毛发">
+					<input type="checkbox" class="checkbox10" name="plumage" title="有羽毛" value="有羽毛">
+					<input type="checkbox" class="checkbox11" name="canLayEgg" title="会下蛋" value="会下蛋">
+					<input type="checkbox" class="checkbox12" name="canSwim" title="会游泳" value="会游泳">
+					<input type="checkbox" class="checkbox13" name="tooth" title="有犬齿" value="有犬齿">
+					<input type="checkbox" class="checkbox14" name="longLeg" title="有长腿" value="有长腿">
+					<input type="checkbox" class="checkbox15" name="longNeck" title="有长脖子" value="有长脖子">
+					<input type="checkbox" class="checkbox16" name="eye" title="眼盯前方" value="眼盯前方">
+					<input type="checkbox" class="checkbox17" name="mammal" title="哺乳动物" value="哺乳动物">
+					<input type="checkbox" class="checkbox18" name="carnivorous" title="肉食动物" value="肉食动物">
+					<input type="checkbox" class="checkbox19" name="hoofedAnimal" title="有蹄动物" value="有蹄动物">
+					<input type="checkbox" class="checkbox20" name="jue" title="嚼反刍动物" value="嚼反刍动物">
+					<input type="checkbox" class="checkbox21" name="spot" title="身上有暗斑点" value="身上有暗斑点">
+					<input type="checkbox" class="checkbox22" name="stripe" title="有黑色条纹" value="有黑色条纹">
+					<input type="checkbox" class="checkbox23" name="blackAndWhite" title="有黑白两色" value="有黑白两色">
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn" lay-submit lay-filter="formDemo" id="submit-btn">确定</button>
+					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				</div>
+			</div>
+		</form>
+
+		<div>
+			<p>结果：</p>
+			<div id="result" class="layui-bg-gray"></div>
+		</div>
+		
+	</div>
+	<script type="text/javascript" src="layui/layui.js"></script>
+	<script type="text/javascript">
+		layui.use(['form','layer'],function() {
+			var form = layui.form;
+			form.on('submit(formDemo)',function(data) {
+				return false;
+			})
+		})
+	</script>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

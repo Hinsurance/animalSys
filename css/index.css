@@ -1,0 +1,51 @@
+/*html,
+body {
+	height: 100%;
+}*/
+body {
+	background-color: #f2f2f2;
+	font-family: 'PingFang SC','Microsoft Yahei';
+}
+.clearfix {
+	content: '\20';
+	display: block;
+	height: 0;
+	clear: both;
+}
+.clearfix {
+	zoom: 1;
+}
+
+.container {
+	width: 800px;
+	height: 100%;
+	padding: 30px 20px;
+	background-color: rgb(255,255,255);
+	box-shadow: 0 0 20px rgba(0,0,0,.3);
+}
+
+.container > h1 {
+	text-align: center;
+	margin-bottom: 10px;
+}
+.container > h1 + p {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+/**
+ * 结果
+ */
+#result {
+	height: 50px;
+	padding: 20px 30px;
+	margin: 10px 0;
+}
+
+/**
+ * 规则库
+ */
+.rules_list {
+	padding-left: 110px;
+    margin-bottom: 10px;
+}
